@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 1: Авторизация</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Авторизация</h2>
+        <p>Для доступа к следующему уровню вам необходимо ввести корректные имя пользователя и пароль.</p>
+        <form id="loginForm">
+            <input type="text" placeholder="Имя пользователя" required>
+            <input type="password" placeholder="Пароль" required>
+            <button type="submit">Войти</button>
+        </form>
+        <p id="error-message"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

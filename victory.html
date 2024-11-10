@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Победа!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="victory-container">
+        <div class="victory-content">
+            <h1 class="victory-title">ПОЗДРАВЛЯЕМ!</h1>
+            <p>Вы прошли все уровни и нашли флаг!</p>
+            <p id="final-flag" class="flag-text">Флаг: mgkit_ctf{A98D2F5C-B73E-484A-A961-F858B259D647}</p>
+            <a href="index.html" class="restart-button">Начать заново</a>
+        </div>
+    </div>
+
+    <div class="terminal-container fade-in">
+        <div class="terminal-content">
+            <div class="terminal-prompt">user@mgkit-ctf:~$ </div>
+            <div class="terminal-output">
+                <div class="terminal-line">Scanning network... </div>
+                <div class="terminal-line">Found target: 192.168.1.10</div>
+                <div class="terminal-line">Attempting connection...</div>
+                <div class="terminal-line">Connection established.</div>
+                <div class="terminal-line">Initiating hacking sequence... </div>
+                <div class="terminal-line">cracking password... </div>
+                <div class="terminal-line">...</div>
+                <div class="terminal-line">PASSWORD CRACKED! </div>
+                <div class="terminal-line">Accessing flag... </div>
+                <div class="terminal-line">Flag found! </div>
+                <div class="terminal-line">mgkit_ctf{A98D2F5C-B73E-484A-A961-F858B259D647}</div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <script>
+        const terminalLines = document.querySelectorAll('.terminal-line');
+        let currentLine = 0;
+
+        function typeLine() {
+            if (currentLine < terminalLines.length) {
+                const line = terminalLines[currentLine];
+                let typedText = '';
+                let i = 0;
+                const interval = setInterval(() => {
+                    typedText += line.textContent[i];
+                    line.textContent = typedText;
+                    i++;
+                    if (i >= line.textContent.length) {
+                        clearInterval(interval);
+                        currentLine++;
+                        setTimeout(typeLine, 1000);
+                    }
+                }, 50);
+            }
+        }
+
+        setTimeout(typeLine, 1000); // Начать анимацию с задержкой
+
+        // Матричный эффект
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-={}[]\:;"\'<>,.?/~`';
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0f0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 30);
+    </script>
+</body>
+</html>

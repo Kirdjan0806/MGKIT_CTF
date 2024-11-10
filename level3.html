@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 3: SQL инъекция</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sql-container">
+        <h2>SQL Инъекция</h2>
+        <p>Введите ваш ID пользователя для доступа к данным.</p>
+        <p><strong>Подсказка:</strong> Попробуйте использовать уязвимость SQL инъекции для получения доступа к следующему уровню.</p>
+        <input type="text" id="userId" placeholder="ID пользователя">
+        <button onclick="checkSQL()">Отправить</button>
+        <p id="sql-message"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

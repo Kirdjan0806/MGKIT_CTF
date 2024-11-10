@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 5: Командный терминал</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <h2>Командный терминал</h2>
+        <p>Вы находитесь в командном терминале. Введите команду для доступа к флагу.</p>
+
+        <div class="terminal-content">
+            <div class="terminal-prompt">user@mgkit-ctf:~$ </div>
+            <div class="terminal-output">
+                <div class="terminal-line"># ls</div>
+                <div class="terminal-line">documents</div>
+                <div class="terminal-line">images</div>
+                <div class="terminal-line">secrets</div>
+                <div class="terminal-line"># cd secrets</div>
+                <div class="terminal-line"># ls</div>
+                <div class="terminal-line">flag.txt</div>
+            </div>
+        </div>
+
+        <!-- Ввод команды -->
+        <input type="text" id="terminalInput" placeholder="Введите команду...">
+        <button onclick="executeCommand()">Выполнить</button>
+
+        <!-- Сообщение о флаге -->
+        <p id="flag-message" style="display:none;">Флаг: CTF{congratulations_you_found_the_flag}</p>
+    </div>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <script>
+        // ... (Код матричного эффекта из предыдущих ответов) ...
+
+        const terminalOutput = document.querySelector('.terminal-output');
+        const terminalPrompt = document.querySelector('.terminal-prompt');
+
+        function executeCommand() {
+            const command = document.getElementById('terminalInput').value;
+
+            if (command === 'cat flag.txt') {
+                document.getElementById('flag-message').style.display = 'block';
+                const newLine = document.createElement('div');
+                newLine.classList.add('terminal-line');
+                newLine.textContent = 'nФлаг найден!';
+                terminalOutput.appendChild(newLine);
+
+                setTimeout(() => { window.location.href = 'victory.html'; }, 2000);
+            } else {
+                const newLine = document.createElement('div');
+                newLine.classList.add('terminal-line');
+                newLine.textContent = 'n' + command + ': команда не найдена';
+                terminalOutput.appendChild(newLine);
+
+                // Добавляем анимацию для вывода
+                newLine.classList.add('fade-in');
+
+                // Сбросим ввод
+                document.getElementById('terminalInput').value = '';
+            }
+
+            // Добавляем новую строку приглашения
+            const newPrompt = document.createElement('div');
+            newPrompt.classList.add('terminal-prompt');
+            newPrompt.textContent = 'user@mgkit-ctf:~$ ';
+            terminalOutput.appendChild(newPrompt);
+        }
+    </script>
+</body>
+</html>
