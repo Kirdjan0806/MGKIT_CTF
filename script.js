@@ -16,7 +16,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 function checkCipher() {
     const answer = document.getElementById('cipherAnswer').value;
     
-    if (answer === 'MGKIT_CTF_2024') { // Расшифрованное сообщение
+    if (answer === 'MGKEIT_CTF_2024') { // Расшифрованное сообщение
         window.location.href = 'level3.html';
     } else {
         document.getElementById('cipher-message').innerText = 'Неверный ответ!';
@@ -28,7 +28,7 @@ function checkCipher() {
 function checkSQL() {
     const userId = document.getElementById('userId').value;
     
-    if (userId === "'or 1=1") {
+    if (userId === "' or 1=1") {
         window.location.href = 'level4.html';
     } else {
         document.getElementById('sql-message').innerText = 'Неверный ID!';
@@ -39,7 +39,7 @@ function checkSQL() {
 // Уровень 4: Проверка исходного кода
 function checkSource() {
     const answer = document.getElementById('sourceAnswer').value;
-    if (answer === 'MGKIT_CTF_PRO') { // Декодированный ответ
+    if (answer === 'MGKEIT_CTF_PRO') { // Декодированный ответ
         window.location.href = 'level5.html';
     } else {
         document.getElementById('source-message').innerText = 'Неверный ответ!';
