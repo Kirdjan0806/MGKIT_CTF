@@ -39,7 +39,7 @@ function checkSQL() {
 // Уровень 4: Проверка исходного кода
 function checkSource() {
     const answer = document.getElementById('sourceAnswer').value;
-    if (answer === 'MGKEIT_CTF_PRO') { // Декодированный ответ
+    if (answer === 'MGKIT_CTF_PRO') { // Декодированный ответ
         window.location.href = 'level5.html';
     } else {
         document.getElementById('source-message').innerText = 'Неверный ответ!';
