@@ -4,7 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     
     const username = event.target[0].value; // Получаем имя пользователя
     const password = event.target[1].value; // Получаем пароль из формы
-    if (username === 'admin' && password === 'password123') { // Замените на ваши данные
+    if (username === 'admin' && password === 'MGKEITCTF123') { // Замените на ваши данные
         window.location.href = 'level2.html';
     } else {
         document.getElementById('error-message').innerText = 'Неверное имя пользователя или пароль!';
@@ -28,7 +28,7 @@ function checkCipher() {
 function checkSQL() {
     const userId = document.getElementById('userId').value;
     
-    if (userId === '1 OR 1=1') {
+    if (userId === "'or 1=1") {
         window.location.href = 'level4.html';
     } else {
         document.getElementById('sql-message').innerText = 'Неверный ID!';
